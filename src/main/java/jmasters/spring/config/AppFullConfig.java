@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import({ AppConfig.class, AppPrototypeConfig.class, AppSingletonConfig.class })
+@Import({ AppConfig.class, AppPrototypeConfig.class, AppSingletonConfig.class, AppMultiplierSummatorConfig.class })
 public class AppFullConfig {
 
 }
