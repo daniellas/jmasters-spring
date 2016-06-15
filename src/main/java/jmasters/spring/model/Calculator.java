@@ -4,4 +4,6 @@ public interface Calculator {
     int calculate(int a, int b);
 
     int getCounter();
+    
+    int getNumber();
 }

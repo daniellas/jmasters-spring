@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -19,7 +18,6 @@ public class SingletonTest {
     private Calculator summator;
 
     @Autowired
-    @Qualifier("summator")
     private Calculator nextSummator;
 
     @Test
@@ -38,8 +36,8 @@ public class SingletonTest {
     }
 
     @Test
-    public void summatorsShouldHaveSameCounter() {
-        Assert.assertEquals(1, summator.getCounter());
+    public void summatorsShouldHaveSameNumbers() {
+        Assert.assertEquals(nextSummator.getNumber(), summator.getNumber());
     }
 
 }

@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -16,37 +16,17 @@ import jmasters.spring.model.PrototypeBean;
 public class PrototypeTest {
 
     @Autowired
-    private PrototypeBean prototypeBean;
-
-    @Autowired
-    @Qualifier("prototypeBean")
-    private PrototypeBean nextPrototypeBean;
+    private ApplicationContext ctx;
 
     @Test
-    public void prototypeBeansShouldBeInjected() {
-        Assert.assertNotNull(prototypeBean);
-        Assert.assertNotNull(nextPrototypeBean);
-    }
+    public void everyPrototypeBeanShouldCreateNewOne() {
+        PrototypeBean bean1 = ctx.getBean(PrototypeBean.class);
+        PrototypeBean bean2 = ctx.getBean(PrototypeBean.class);
+        PrototypeBean bean3 = ctx.getBean(PrototypeBean.class);
 
-    @Test
-    public void prototypeBeansShouldBeDifferent() {
-        Assert.assertNotEquals(prototypeBean, nextPrototypeBean);
-    }
-
-    @Test
-    public void prototypeBeansShouldHaveCorrectNumbers() {
-        Assert.assertEquals(1, prototypeBean.getNumber());
-        System.out.println(prototypeBean.getNumber());
-        Assert.assertEquals(2, nextPrototypeBean.getNumber());
-        System.out.println(nextPrototypeBean.getNumber());
-    }
-
-    @Test
-    public void prototypeBeansCounterShouldBeTwo() {
-        Assert.assertEquals(2, nextPrototypeBean.getCounter());
-        System.out.println(prototypeBean.getCounter());
-        Assert.assertEquals(2, nextPrototypeBean.getCounter());
-        System.out.println(nextPrototypeBean.getCounter());
+        Assert.assertEquals(1, bean1.getNumber());
+        Assert.assertEquals(2, bean2.getNumber());
+        Assert.assertEquals(3, bean3.getNumber());
     }
 
 }

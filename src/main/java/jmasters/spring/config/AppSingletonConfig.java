@@ -14,4 +14,9 @@ public class AppSingletonConfig {
         return new Summator();
     }
 
+    @Bean
+    public Calculator nextSummator() {
+        return summator();
+    }
+
 }
