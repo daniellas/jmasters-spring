@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(AppFullConfig.class);
 
+        
         System.out.println(ctx.getBean("summator", Calculator.class).calculate(1, 2));
         System.out.println(ctx.getBean("stringBean"));
         System.out.println(ctx.getBean(PrototypeBean.class).getNumber());

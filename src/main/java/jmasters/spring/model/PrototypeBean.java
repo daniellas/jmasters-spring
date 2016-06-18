@@ -14,7 +14,7 @@ public class PrototypeBean {
     public PrototypeBean() {
         counter++;
         number = counter;
-        System.out.println("PrototypeBean konstruktor numer " + counter);
+        System.out.println("PrototypeBean konstruktor numer " + number);
     }
 
     public int getCounter() {
